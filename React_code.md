@@ -1,29 +1,103 @@
-# React Interview questions
-### What is React?
-* React is a front-end JavaScript library developed by Facebook in 2011.
-* It follows the component based approach which helps in building reusable UI components.
-* It is used for developing complex and interactive web and mobile UI.
-* Even though it was open-sourced only in 2015, it has one of the largest communities supporting it.
+# React Code
+### toFindDuplicates
+```
+const arry = [1, 2, 1, 3, 4, 3, 5];
+const toFindDuplicates = arry => arry.filter((item, index) => arr.indexOf(item) !== index)
+const duplicateElementa = tofindDuplicates(arry);
+console.log(duplicateElements);
 
-### What are the features of React? 
-Major features of React are listed below:
+// Output: [1, 3]
+```
+### toCountDuplicates Ex:1
+```
+const myArray = ['a', 'b', 'c', 'c', 'b', 'd'];
 
-* It uses the virtual DOM instead of the real DOM.
-* It uses server-side rendering.
-* It follows uni-directional data flow or data binding.
+const elementCounts = {};
+myArray.forEach(element => {
+  elementCounts[element] = (elementCounts[element] || 0) + 1;
+});
+console.log(elementCounts);
+```
+### toCountDuplicates ex:2:
+```
+const myArray = ['a', 'b', 'c', 'c', 'b', 'd'];
+var elementCounts = myArray.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), {});
+console.log(elementCounts);
+```
+### toCountJSONDuplicates ex: 1
+```
+const myArray = [
+{name: 'test', age: 20},
+{name: 'test', age: 22},
+{name: 'test', age: 30},
+{name: 'test', age: 27}
+];
 
-### List some of the major advantages of React.
-Some of the major advantages of React are:
-* It increases the application’s performance
-* It can be conveniently used on the client as well as server side
-* Because of JSX, code’s readability increases
-* React is easy to integrate with other frameworks like Meteor, Angular, etc
-* Using React, writing UI test cases become extremely easy
+const counts = {};
+myArray.forEach(element => {
+if(!counts[element.age]){
+	counts[element.age] = [element.age]
+}else{
+counts[element.age].push([element.age])
+} 
+});
 
-### What are the limitations of React?
-Limitations of React are listed below:
+console.log(counts);
+```
+ 
+### Reverse
+```
+function reverseBySeparator(string, separator) {
+  return string.split(separator).reverse().join(separator);
+}
+```
 
-* React is just a library, not a full-blown framework
-* Its library is very large and takes time to understand
-* It can be little difficult for the novice programmers to understand
-* Coding gets complex as it uses inline templating and JSX
+### Recursion
+```
+function add(number) {
+  if (number <= 0) {
+    return 0;
+  } else {
+    return number + add(number - 1);
+  }
+}
+add(3) => 3 + add(2)
+          3 + 2 + add(1)
+          3 + 2 + 1 + add(0)
+          3 + 2 + 1 + 0 = 6 
+```
+### HOC
+```
+import React from 'react';
+// Take in a component as argument WrappedComponent
+const higherOrderComponent = (WrappedComponent) => {
+// And return another component
+  class HOC extends React.Component {
+    render() {
+      return <WrappedComponent />;
+    }
+  }
+  return HOC;
+};
+
+```
+
+### Use Context
+```
+import React from 'react';
+
+const DaylightContext = createContext({});
+export function DaylightContextProvider(props) {
+  const currentDate = new Date();
+  const hour = currentDate.getHours();
+  const isDaylight = hour > 8 || hour < 20;
+  
+  return (
+    <DaylightContext.Provider value={{ isDaylight: isDaylight }}>
+      {props.children}
+    </DaylightContext.Provider>
+  );
+}
+
+export const useDaylightContext = () => useContext(DaylightContext);
+```
