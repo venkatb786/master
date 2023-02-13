@@ -2,11 +2,21 @@
 Coding url https://blog.bitsrc.io/most-important-javascript-coding-challenge-aa14c956d2df
 ### Swap Variables in JavaScript
 ####  Destructuring assignment
-```let a;
-let b;
-[a, b] = [1, 2, 3];
-a; // => 1
-b; // => 2
+```
+var a = 1,
+    b = 2;
+
+[a, b] = [b, a];
+
+console.log('a:', a, 'b:', b); // a: 2 b: 1
+
+let a = 1, b = 2;
+a = a ^ b;
+b = a ^ b;
+a = a ^ b;
+    
+console.log('a is now:', a);
+console.log('b is now:', b);
 ```
 ####  Addition and difference
 ```
