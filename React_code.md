@@ -17,6 +17,10 @@ a = a ^ b;
     
 console.log('a is now:', a);
 console.log('b is now:', b);
+
+b = [a, b];
+a = b[1];
+b = b[0];
 ```
 ####  Addition and difference
 ```
