@@ -1,5 +1,23 @@
 # React Code
 Coding url https://blog.bitsrc.io/most-important-javascript-coding-challenge-aa14c956d2df
+### Swap Variables in JavaScript
+####  Destructuring assignment
+```let a;
+let b;
+[a, b] = [1, 2, 3];
+a; // => 1
+b; // => 2
+```
+####  Addition and difference
+```
+let a = 1;
+let b = 2;
+a = a + b;
+b = a - b;
+a = a - b;
+a; // => 2
+b; // => 1
+```
 ### toFindDuplicates
 ```
 const arry = [1, 2, 1, 3, 4, 3, 5];
